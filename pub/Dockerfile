@@ -11,7 +11,10 @@ RUN apt-get update && \
     apt-get -y install lirc
 
 RUN apt-get update && \
-    apt-get -y install python-dev 
+    apt-get -y install python-dev
+
+RUN apt-get update && \
+	apt-get -y install uwsgi
 
 RUN apt-get update && \
     apt-get -y install python-pip 
