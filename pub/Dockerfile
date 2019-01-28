@@ -17,6 +17,6 @@ RUN apt-get update && \
     apt-get -y install python-pip 
 
 
-COPY ./mqqt/mqqt/mqqt_publisher /mqqt
+COPY ./pub /pub
 
-#CMD [ "python", "./mqqt/mqqt_publisher.py" ]
+#CMD [ "python", "./pub/mqqt_publisher.py" ]

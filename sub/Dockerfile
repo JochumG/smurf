@@ -15,11 +15,8 @@ RUN pip install --upgrade paho-mqtt
 #RUN  apt install --upgrade  daemon
 
 RUN apt-get install --upgrade lirc
-COPY ./mqqt /mqqt
+COPY ./sub_listener /sub_listener
 # Run subscriber when the container launches
-CMD [ "python", "./mqqt/mqqt_subscriber.py" ]
-CMD [ "python", "./mqqt/deebot_subscriber.py" ]
-
-#CMD [ "python", "./mqqt/mqqt_publisher.py" ]
+CMD [ "python", "./sub_listener/mqqt_subscriber.py" ]
 
 
