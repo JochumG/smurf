@@ -19,4 +19,4 @@ RUN apt-get update && \
 
 COPY ./pub /pub
 
-#CMD [ "python", "./pub/mqqt_publisher.py" ]
+CMD [ "python", "./pub/mqqt_publisher.py" ]
