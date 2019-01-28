@@ -17,9 +17,7 @@ RUN pip install --upgrade paho-mqtt
 RUN apt-get install --upgrade lirc
 COPY ./mqqt /mqqt
 # Run subscriber when the container launches
-CMD [ "python", "./mqqt/mqqt_subscriber.py" ]
 CMD [ "python", "./mqqt/deebot_subscriber.py" ]
-
 #CMD [ "python", "./mqqt/mqqt_publisher.py" ]
 
 
