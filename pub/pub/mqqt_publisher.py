@@ -1,4 +1,4 @@
-from flask import Flask
+
 import uwsgi
 
 import paho.mqtt.publish as publish

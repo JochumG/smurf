@@ -1,8 +1,12 @@
 #docker build ./  -t pub
 #docker run -p 80:80 -t pub
 
-FROM tiangolo/uwsgi-nginx-flask:flask
+#FROM tiangolo/uwsgi-nginx-flask:flask
+FROM python:latest
  	
+RUN apt-get update && \
+    apt-get -y install nginx
+
 RUN apt-get update && \
     apt-get -y install lirc
 

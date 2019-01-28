@@ -1,4 +1,3 @@
-from flask import Flask
 import uwsgi
 
 app = Flask(__name__)
