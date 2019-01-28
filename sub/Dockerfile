@@ -18,5 +18,5 @@ RUN apt-get install --upgrade lirc
 COPY ./sub_listener /sub_listener
 # Run subscriber when the container launches
 CMD [ "python", "./sub/deebot_subscriber.py" ]
-#CMD [ "python", "./pub/mqqt_publisher.py" ]
+
 
