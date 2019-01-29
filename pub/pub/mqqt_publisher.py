@@ -7,7 +7,7 @@
 #publish.single(MQTT_PATH, "Hello publish local MQTTT!", hostname=MQTT_SERVER)
 print("published...")
 
-app = Flask(__name__)
+#app = Flask(__name__)
 
 @app.route("/")
 def hello():
