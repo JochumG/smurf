@@ -4,8 +4,8 @@
 #FROM tiangolo/uwsgi-nginx-flask:flask
 FROM python:latest
  	
-#RUN apt-get update && \
-#    apt-get -y install nginx
+RUN apt-get update && \
+    apt-get -y install nginx
 
 RUN apt-get update && \
     apt-get -y install lirc
