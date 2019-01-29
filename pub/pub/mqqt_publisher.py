@@ -1,10 +1,10 @@
 
 #import uwsgi
 
-import paho.mqtt.publish as publish
-MQTT_SERVER = "192.168.0.60"
-MQTT_PATH = "sensordata"
-publish.single(MQTT_PATH, "Hello publish local MQTTT!", hostname=MQTT_SERVER)
+#import paho.mqtt.publish as publish
+#MQTT_SERVER = "192.168.0.60"
+#MQTT_PATH = "sensordata"
+#publish.single(MQTT_PATH, "Hello publish local MQTTT!", hostname=MQTT_SERVER)
 print("published...")
 
 app = Flask(__name__)
