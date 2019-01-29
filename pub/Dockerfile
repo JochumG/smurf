@@ -30,6 +30,21 @@ RUN python3 -m pip install --upgrade uwsgi
 #RUN python3 -m pip install --upgrade lirc
 #RUN python3 -m pip install --upgrade nginx
 #RUN python3 -m pip install --upgrade python-dev
-COPY ./pub /pub
 
+# setup uwsgi logging directory
+RUN mkdir -p /var/log/uwsgi
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log \
+    && ln -sf /dev/stdout /var/log/uwsgi.log
+#    && ln -sf /dev/stdout /var/log/uwsgi/req.log
+
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+    && ln -sf /dev/stderr /var/log/nginx/error.log \
+    && ln -sf /dev/stdout /var/log/uwsgi.log
+#    && ln -sf /dev/stdout /var/log/uwsgi/req.log
+
+
+COPY ./pub /pub
 CMD [ "python", "./pub/mqqt_publisher.py" ]
