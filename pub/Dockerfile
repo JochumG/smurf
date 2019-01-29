@@ -19,8 +19,9 @@ FROM tiangolo/uwsgi-nginx-flask:flask
 #RUN apt-get update && \
 #    apt-get -y install python-pip --upgrade pip
 
-RUN pip install --upgrade pip
+
 RUN pip install --upgrade python-pip
+RUN pip install --upgrade pip
 RUN pip install --upgrade uwsgi
 RUN pip install --upgrade lirc
 #RUN pip install --upgrade nginx
