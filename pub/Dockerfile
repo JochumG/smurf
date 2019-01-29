@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 RUN pip install --upgrade pip
 RUN pip install --upgrade uwsgi
-#werkt neit RUN pip install lirc
+RUN pip install --upgrade lirc
 RUN pip install --upgrade nginx
 RUN pip install --upgrade python-pip
 RUN pip install --upgrade python-dev
