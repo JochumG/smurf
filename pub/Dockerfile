@@ -10,6 +10,10 @@ FROM python:latest
 RUN apt-get update && \
     apt-get -y install lirc
 
+#debconf: delaying package configuration, since apt-utils is not installed
+RUN apt-get update && \
+    apt-get -y install apt-utils
+	
 RUN apt-get update && \
     apt-get -y install python-dev
 
@@ -19,7 +23,8 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get -y install python-pip --upgrade pip
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade python-pip
+
 RUN pip install --upgrade uwsgi
 RUN pip install --upgrade lirc
 RUN pip install --upgrade nginx
