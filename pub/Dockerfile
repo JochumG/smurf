@@ -3,6 +3,10 @@
 
 #FROM tiangolo/uwsgi-nginx-flask:flask
 FROM python:latest
+
+#debconf: delaying package configuration, since apt-utils is not installed
+RUN apt-get update && \
+    apt-get -y install apt-utils
  	
 RUN apt-get update && \
     apt-get -y install nginx
@@ -10,9 +14,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get -y install lirc
 
-#debconf: delaying package configuration, since apt-utils is not installed
-RUN apt-get update && \
-    apt-get -y install apt-utils
+
 	
 RUN apt-get update && \
     apt-get -y install python-dev
