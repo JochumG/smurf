@@ -2,7 +2,7 @@
 import uwsgi
 
 import paho.mqtt.publish as publish
-MQTT_SERVER = "192.168.0.60"
+MQTT_SERVER = "77.248.61.13"
 MQTT_PATH = "sensordata"
 publish.single(MQTT_PATH, "Hello publish local MQTTT!", hostname=MQTT_SERVER)
 print("published...")

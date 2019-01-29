@@ -5,7 +5,7 @@
 
 import paho.mqtt.client as mqtt
 
-MQTT_SERVER = "192.168.0.60"
+MQTT_SERVER = "77.248.61.13"
 MQTT_PATH = "deebot"
 
 # The callback for when the client receives a CONNACK response from the server.
