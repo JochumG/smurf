@@ -22,7 +22,7 @@ RUN apt-get update && \
 RUN apt-get update && \
 	apt-get -y install uwsgi
 
-RUN python3 -m apt-get update && \
+RUN apt-get update && \
     apt-get -my install python3-pip --upgrade pip
 RUN python3 -m pip install --upgrade pip
 RUN python3 -m pip install --upgrade python3-pip
