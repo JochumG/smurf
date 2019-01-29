@@ -22,14 +22,14 @@ RUN apt-get update && \
 RUN apt-get update && \
 	apt-get -y install uwsgi
 
-#RUN apt-get update && \
-#    apt-get -y install python-pip --upgrade pip
-RUN pip install --upgrade pip
-#RUN pip install --upgrade python-pip
-RUN pip install --upgrade uwsgi
-#RUN pip install --upgrade lirc
-#RUN pip install --upgrade nginx
-RUN pip install --upgrade python-dev
+RUN python3 -m apt-get update && \
+    apt-get -my install python3-pip --upgrade pip
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install --upgrade python3-pip
+RUN python3 -m pip install --upgrade uwsgi
+RUN python3 -m pip install --upgrade lirc
+RUN python3 -m pip install --upgrade nginx
+RUN python3 -m pip install --upgrade python-dev
 COPY ./pub /pub
 
 CMD [ "python", "./pub/mqqt_publisher.py" ]
