@@ -1,5 +1,5 @@
 
-import uwsgi
+#import uwsgi
 
 import paho.mqtt.publish as publish
 MQTT_SERVER = "192.168.0.60"
