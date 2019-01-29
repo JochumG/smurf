@@ -14,7 +14,7 @@ def hello():
     return "Hey I'm using Docker AND MQQT! Az well"
 
 #if __name__ == "__mqqt_publisher__":
-#app.run(host="0.0.0.0", debug=True, port=80)
+run(host="0.0.0.0", debug=True, port=80)
 
 
 
