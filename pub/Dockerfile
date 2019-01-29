@@ -19,12 +19,12 @@ RUN apt-get update && \
 #RUN apt-get update && \
 #    apt-get -y install python-pip --upgrade pip
 
-RUN pip install uwsgi
+RUN pip install --upgrade pip
+RUN pip install --upgrade uwsgi
 #werkt neit RUN pip install lirc
-RUN pip install nginx
-RUN pip install python-pip
-RUN pip install python-dev
-
+RUN pip install --upgrade nginx
+RUN pip install --upgrade python-pip
+RUN pip install --upgrade python-dev
 COPY ./pub /pub
 
 CMD [ "python", "./pub/mqqt_publisher.py" ]
