@@ -4,21 +4,26 @@
 #FROM tiangolo/uwsgi-nginx-flask:flask
 FROM python:latest
  	
-RUN apt-get update && \
-    apt-get -y install nginx
+#RUN apt-get update && \
+#    apt-get -y install nginx
 
-RUN apt-get update && \
-    apt-get -y install lirc
+#RUN apt-get update && \
+#    apt-get -y install lirc
 
-RUN apt-get update && \
-    apt-get -y install python-dev
+#RUN apt-get update && \
+#    apt-get -y install python-dev
 
-RUN apt-get update && \
-	apt-get -y install uwsgi
+#RUN apt-get update && \
+#	apt-get -y install uwsgi
 
-RUN apt-get update && \
-    apt-get -y install python-pip 
+#RUN apt-get update && \
+#    apt-get -y install python-pip 
 
+RUN pip install uwsgi
+RUN pip install lirc
+RUN pip install nginx
+RUN pip install python-pip
+RUN pip install python-dev
 
 COPY ./pub /pub
 
