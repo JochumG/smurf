@@ -7,8 +7,8 @@ FROM python:latest
 #RUN apt-get update && \
 #    apt-get -y install nginx
 
-#RUN apt-get update && \
-#    apt-get -y install lirc
+RUN apt-get update && \
+    apt-get -y install lirc
 
 #RUN apt-get update && \
 #    apt-get -y install python-dev
@@ -17,10 +17,10 @@ FROM python:latest
 #	apt-get -y install uwsgi
 
 #RUN apt-get update && \
-#    apt-get -y install python-pip 
+#    apt-get -y install python-pip --upgrade pip
 
 RUN pip install uwsgi
-RUN pip install lirc
+#werkt neit RUN pip install lirc
 RUN pip install nginx
 RUN pip install python-pip
 RUN pip install python-dev
