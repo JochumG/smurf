@@ -28,8 +28,8 @@ RUN python3 -m pip install --upgrade pip
 #RUN python3 -m pip install --upgrade python3-pip
 RUN python3 -m pip install --upgrade uwsgi
 #RUN python3 -m pip install --upgrade lirc
-RUN python3 -m pip install --upgrade nginx
-RUN python3 -m pip install --upgrade python-dev
+#RUN python3 -m pip install --upgrade nginx
+#RUN python3 -m pip install --upgrade python-dev
 COPY ./pub /pub
 
 CMD [ "python", "./pub/mqqt_publisher.py" ]
