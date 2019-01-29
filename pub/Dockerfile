@@ -25,7 +25,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get -my install python3-pip --upgrade python3-pip
 RUN python3 -m pip install --upgrade pip
-RUN python3 -m pip install --upgrade python-pip
+RUN python3 -m pip install --upgrade python3-pip
 RUN python3 -m pip install --upgrade uwsgi
 RUN python3 -m pip install --upgrade lirc
 RUN python3 -m pip install --upgrade nginx
