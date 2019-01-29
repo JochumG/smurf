@@ -20,8 +20,8 @@ RUN apt-get update && \
 RUN apt-get update && \
 	apt-get -y install uwsgi
 
-RUN apt-get update && \
-    apt-get -y install python-pip --upgrade pip
+#RUN apt-get update && \
+#    apt-get -y install python-pip --upgrade pip
 
 RUN pip install --upgrade python-pip
 RUN pip install --upgrade uwsgi
