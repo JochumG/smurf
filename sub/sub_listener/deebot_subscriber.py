@@ -5,12 +5,13 @@
 #https://www.instructables.com/id/How-To-Useemulate-remotes-with-Arduino-and-Raspber/
 #een deebot lirc file maken
 #https://raspberrypi.stackexchange.com/questions/81876/raspberry-pi-3-not-lirc-not-running-working
+#de volgende url helemaal doorlopen om het werkend te krijgen, deze lijkt in zijn geheel correct
+#https://github.com/mtraver/rpi-ir-remote
+
 
 #deebot.lircd.conf
 #sudo irrecord -d /dev/lirc0 ~/lircd.conf
 import os
-       
-
 import paho.mqtt.client as mqtt
 
 MQTT_SERVER = "77.248.61.13"
