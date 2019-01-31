@@ -1,0 +1,24 @@
+#https://github.com/mtraver/rpi-ir-remote lijkt het goed te doen
+begin remote
+
+  name  deebot
+  bits           32
+  flags SPACE_ENC|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  header       9011  4425
+  one           625  1605
+  zero          625   490
+  ptrail        625
+  repeat       9016  2210
+  gap          107587
+  toggle_bit_mask 0x0
+  frequency    38000
+
+      begin codes
+          KEY_PLAY                 0x00FFD02F 0x7EA4020C
+          KEY_STOP                 0x00FF708F 0x7EA4020C
+      end codes
+
+end remote
