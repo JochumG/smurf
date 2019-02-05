@@ -11,9 +11,17 @@
 
 #deebot.lircd.conf
 #sudo irrecord -d /dev/lirc0 ~/lircd.conf
+
+#op de windows machine een environ omgeving ingesteld, om dev /test/ staging te faciliteren
+#environment[CODE_env]="dev"
+
 import os
 import paho.mqtt.client as mqtt
 
+#print (os.getenv(CODE_ENV));
+for a in os.environ:
+    print('Var: ', a, 'Value: ', os.getenv(a))
+	
 MQTT_SERVER = "77.248.61.13"
 MQTT_PATH = "deebot"
 
