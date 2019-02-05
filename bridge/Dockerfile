@@ -28,9 +28,9 @@ RUN pip install --upgrade flask-restful
 RUN pip install --upgrade paho-mqtt
 
 
-COPY ./bridge /bridge
+COPY ./server.py /server.py
 # Run bridge when the container launches
 
-CMD [ "python", "./bridge/server.py" ]
+CMD [ "python", "server.py" ]
 
 
