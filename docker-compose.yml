@@ -15,7 +15,7 @@ services:
 #     restart: unless-stopped
  sub:
       image: sub
-      container_name: subscribe
+      container_name: sub
 
 # pub:
 #     image: pub
@@ -23,8 +23,8 @@ services:
 #      expose:
 #        - 80
  broker:
-      image: broker
-      container_name: broker
+      image: bridge
+      container_name: bridge
       expose:
-        - 80
+        - 5002
   

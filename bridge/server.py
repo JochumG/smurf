@@ -35,5 +35,5 @@ api.add_resource(Deebot, '/deebot') # Route_1
 
 
 if __name__ == '__main__':
-     app.run(port='80')
+     app.run(port='5002')
      
