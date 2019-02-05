@@ -1,5 +1,5 @@
 #docker build ./  -t bridge
-
+#sudo service nginx stop
 FROM python:latest
  	
 	
