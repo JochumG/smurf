@@ -4,27 +4,35 @@ services:
 #A. docker run --name mqtt --restart=always --net=host -tid -v /volume1/docker/mqtt/config:/mqtt/config:ro -v /volume1/docker/mqtt/log:/mqtt/log -v /volume1/docker/mqtt/data/:/mqtt/data/ toke/mosquitto
 #B. docker run --name mqtt --restart=unless-stopped --net=host -tid -v /volume1/docker/mqtt/config:/mqtt/config:ro -v /volume1/docker/mqtt/log:/mqtt/log -v /volume1/docker/mqtt/data/:/mqtt/data/ toke/mosquitto
 
-# mqtt:
-#      image: toke/mosquitto
-#      network_mode: bridge
-#      container_name: mqtt
-#      expose:
-#        - 1883
-#      ports:
-#        - 1883:1883
+ mqtt:
+      image: toke/mosquitto
+      network_mode: bridge
+      container_name: mqtt
+      expose:
+        - 1883
+      ports:
+        - 1883:1883
 #     restart: unless-stopped
  sub:
       image: sub
       container_name: sub
+#     restart: unless-stopped
 
 # pub:
 #     image: pub
 #      container_name: publisher
 #      expose:
 #        - 80
- broker:
+#      ports:
+#        - 80:80
+#     restart: unless-stopped
+
+ bridge:
       image: bridge
       container_name: bridge
       expose:
         - 5002
-  
+      ports:
+        - 5002:5002
+#     restart: unless-stopped
+
