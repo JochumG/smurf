@@ -17,9 +17,14 @@ services:
       image: sub
       container_name: subscribe
 
- pub:
-      image: pub
-      container_name: publisher
+# pub:
+#     image: pub
+#      container_name: publisher
+#      expose:
+#        - 80
+ broker:
+      image: broker
+      container_name: broker
       expose:
         - 80
   
