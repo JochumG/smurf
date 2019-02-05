@@ -18,16 +18,13 @@ from json import dumps
 
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 api = Api(app)
 
 class Deebot(Resource):
     def get(self):
         return '{start}'
 
-        conn = db_connect.connect()
-        query = conn.execute("select trackid, name, composer, unitprice from tracks;")
-        result = {'data': [dict(zip(tuple (query.keys()) ,i)) for i in query.cursor]}
-        return jsonify(result)
 
         
 
@@ -35,5 +32,5 @@ api.add_resource(Deebot, '/deebot') # Route_1
 
 
 if __name__ == '__main__':
-     app.run(port='5002')
+     app.run(port='80')
      
