@@ -3,7 +3,6 @@
 # Load libraries
 import RPi.GPIO as GPIO
 import time
-from bottle import route, run, template
 
 # Set up the GPIO pins
 GPIO.setmode(GPIO.BOARD)
