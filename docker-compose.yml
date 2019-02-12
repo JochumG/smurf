@@ -13,18 +13,25 @@ services:
 #      ports:
 #        - 1883:1883
 #     restart: unless-stopped
- sub:
-      image: sub
-      container_name: sub
+# sub:
+#      image: sub
+#      container_name: sub
+#     restart: unless-stopped
 
 # pub:
 #     image: pub
 #      container_name: publisher
 #      expose:
 #        - 80
- broker:
+#      ports:
+#        - 80:80
+#     restart: unless-stopped
+
+ bridge:
       image: bridge
       container_name: bridge
       expose:
-        - 5002
-  
+        - 80
+      ports:
+        - 80:80
+#      restart: unless-stopped
