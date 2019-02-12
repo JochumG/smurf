@@ -23,14 +23,18 @@ api = Api(app)
 
 class Deebot(Resource):
     def get(self):
+        return '{startdeebot}'
+
+class Start(Resource):
+    def get(self):
         return '{start}'
 
 
         
 
 api.add_resource(Deebot, '/deebot') # Route_1
+api.add_resource(Start, '/') # Route_2
 
 
 if __name__ == '__main__':
-     app.run(port='80')
-     
+	  app.run(host="0.0.0.0", debug=True, port=5000)
