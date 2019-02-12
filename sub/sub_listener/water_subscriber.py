@@ -1,5 +1,5 @@
 # Python Script To Control Garage Door
-
+ 
 # Load libraries
 import RPi.GPIO as GPIO
 import time
