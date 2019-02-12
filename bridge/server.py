@@ -16,13 +16,17 @@ from bottle import route, run, template
 # MQQT ding
 import paho.mqtt.publish as publish
 #should be environment settings!
-MQTT_SERVER = "77.248.61.13"
+#MQTT_SERVER = "77.248.61.13"
+MQTT_SERVER = "192.168.0.60"
+
 MQTT_PATH="none"
 MQTT_COMMAND="none"
 
 #Subscription paths
 MQTT_PATH_Deebot = "deebot"
 MQTT_PATH_Waterpomp = "pomp"
+
+publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
 
 #bridging to MQQT publishing
 # Handle http requests to the root address
@@ -36,12 +40,12 @@ def pomp(action=0):
  MQTT_PATH=MQTT_PATH_Waterpomp
  MQTT_COMMAND=action
  publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
-
+ return "published"
 # Handle http requests to /deebot
 @route('/deebot/:action')
 def deebot(action=0):
- MQTT_PATH=MQTT_PATH_Waterpomp
+ MQTT_PATH=MQTT_PATH_Deebot
  MQTT_COMMAND=action
  publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
-
+ return "Published"
 run(host='0.0.0.0', port=80)
