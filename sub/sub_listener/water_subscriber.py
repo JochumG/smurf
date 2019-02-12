@@ -60,7 +60,7 @@ def on_message(client, userdata, msg):
             GPIO.output(7, True)
 
 # more callbacks, etc
-client = mqtt.Client("script")
+client = mqtt.Client("Waterpomp")
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(MQTT_SERVER,1883,60)
