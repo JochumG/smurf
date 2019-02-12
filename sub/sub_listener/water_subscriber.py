@@ -51,16 +51,16 @@ def on_message(client, userdata, msg):
 	if msg.payload=="stop":
 	   print ("Stopping the pomp")
 	   #sending GPIO command
-       GPIO.output(7, True)
-	   
+           GPIO.output(7, True)
+
 	elif msg.payload=="start":
-        print ("Starting the pomp")
+            print ("Starting the pomp")
 	    #sending GPIO command
 	    GPIO.output(7, False)
-        time.sleep(.8)
-        GPIO.output(7, True)
+            time.sleep(.8)
+            GPIO.output(7, True)
 
-	# more callbacks, etc
+# more callbacks, etc
 client = mqtt.Client("script")
 client.on_connect = on_connect
 client.on_message = on_message
