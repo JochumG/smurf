@@ -48,4 +48,6 @@ def deebot(action=0):
  MQTT_COMMAND=action
  publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
  return "Published"
+ 
+#Gooi maar open poort 80 en stuur de zooi maar naar de MQTT server
 run(host='0.0.0.0', port=80)

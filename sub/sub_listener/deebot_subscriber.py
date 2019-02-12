@@ -18,23 +18,19 @@
 import os
 import paho.mqtt.client as mqtt
 
-#print (os.getenv(CODE_ENV));
-for a in os.environ:
-    print('Var: ', a, 'Value: ', os.getenv(a))
-	
-MQTT_SERVER = "77.248.61.13"
+#should be environment settings!
+#MQTT_SERVER = "77.248.61.13"
+MQTT_SERVER = "192.168.0.60"
+
+#Subscription paths
 MQTT_PATH = "deebot"
 
-# The callback for when the client receives a CONNACK response from the server.
 
 def on_connect(client, userdata, flags, rc):
-    print("Deebot Connected (code "+str(rc)+")")
+    print("Deebot Subscribed (code "+str(rc)+")")
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
-    print("Subcribing to be able to start Deebot")
     client.subscribe(MQTT_PATH)
-
-    
 	
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
