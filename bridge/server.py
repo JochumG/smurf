@@ -1,40 +1,47 @@
-#https://www.codementor.io/sagaragarwal94/building-a-basic-restful-api-in-python-58k02xsiq
-#https://virtualenv.pypa.io/en/latest/installation/
+# Bridging the poort 1234 from IFTTT to MQQT publishers.
+#loading on startup Raspberry
+# add in /etc/sc.local file:
+# nohup python /home/pismurf/bridge/server.py &
 
-#stappen om een poort open te gooien
-#python -m virtualenv venv
-#./venv/bin/activate
-#pip install flask flask-jsonpify flask-sqlalchemy flask-restful
-#pip freeze
-#python server.py
-#run in background?
-
-
-from flask import Flask, request
-from flask_restful import Resource, Api
-from sqlalchemy import create_engine
-from json import dumps
-#from flask.ext.jsonpify import jsonify
+#starting MQQT server
+#docker stop $(docker ps -a -q)
+#A. docker run --name mqtt --restart=always --net=host -tid -v /volume1/docker/mqtt/config:/mqtt/config:ro -v /volume1/docker/mqtt/log:/mqtt/log -v /volume1/docker/mqtt/data/:/mqtt/data/ toke/mosquitto
+#B. docker run --name mqtt --restart=unless-stopped --net=host -tid -v /volume1/docker/mqtt/config:/mqtt/config:ro -v /volume1/docker/mqtt/log:/mqtt/log -v /volume1/docker/mqtt/data/:/mqtt/data/ toke/mosquitto
 
 
-app = Flask(__name__)
-app.config['DEBUG'] = True
-api = Api(app)
+# webserver ding 
+#import time (vermoedelijk voor de sleep functie)
+from bottle import route, run, template
 
-class Deebot(Resource):
-    def get(self):
-        return '{startdeebot}'
+# MQQT ding
+import paho.mqtt.publish as publish
+#should be environment settings!
+MQTT_SERVER = "77.248.61.13"
+MQTT_PATH="none"
+MQTT_COMMAND="none"
 
-class Start(Resource):
-    def get(self):
-        return '{start}'
+#Subscription paths
+MQTT_PATH_Deebot = "deebot"
+MQTT_PATH_Waterpomp = "pomp"
 
+#bridging to MQQT publishing
+# Handle http requests to the root address
+@route('/')
+def index():
+ return 'Command not found'
+ 
+# Handle http requests to /pomp
+@route('/pomp/:action')
+def pomp(action=0):
+ MQTT_PATH=MQTT_PATH_Waterpomp
+ MQTT_COMMAND=action
+ publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
 
-        
+# Handle http requests to /deebot
+@route('/deebot/:action')
+def deebot(action=0):
+ MQTT_PATH=MQTT_PATH_Waterpomp
+ MQTT_COMMAND=action
+ publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
 
-api.add_resource(Deebot, '/deebot') # Route_1
-api.add_resource(Start, '/') # Route_2
-
-
-if __name__ == '__main__':
-	  app.run(host="0.0.0.0", debug=True, port=5000)
+run(host='0.0.0.0', port=80)
