@@ -2,7 +2,7 @@
 #sudo service nginx stop
 FROM python:latest
  	
-	
+RUN pip install --upgrade pip	
 #stappen om een poort open te gooien
 #python -m virtualenv venv
 #./venv/bin/activate
@@ -18,14 +18,13 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get -y install python-dev 
 
-RUN pip install --upgrade pip
+
 RUN pip install --upgrade bottle
 RUN pip install --upgrade paho-mqtt
 
 
-COPY ./bridge /
+COPY ./server.py /
 # Run bridge when the container launches
-
 CMD [ "python", "server.py" ]
 
 
