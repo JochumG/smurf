@@ -19,16 +19,11 @@ RUN apt-get update && \
     apt-get -y install python-dev 
 
 RUN pip install --upgrade pip
-
-RUN pip install --upgrade flask 
-RUN pip install --upgrade flask-jsonpify 
-RUN pip install --upgrade flask-sqlalchemy 
-RUN pip install --upgrade flask-restful
-
+RUN pip install --upgrade bottle
 RUN pip install --upgrade paho-mqtt
 
 
-COPY ./server.py /server.py
+COPY ./bridge /
 # Run bridge when the container launches
 
 CMD [ "python", "server.py" ]
