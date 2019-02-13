@@ -6,7 +6,7 @@ RUN apt-get update && \
 RUN pip install --upgrade pip
 RUN pip install --upgrade paho-mqtt
 
-COPY ./sub/waterpomp.py /
+COPY ./waterpomp.py /
 # Run bridge when the container launches
 
 CMD [ "python", "waterpomp.py" ]
