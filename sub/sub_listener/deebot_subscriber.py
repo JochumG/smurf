@@ -17,7 +17,7 @@
 
 import os
 import paho.mqtt.client as mqtt
-
+import random
 #should be environment settings!
 #MQTT_SERVER = "77.248.61.13"
 MQTT_SERVER = "192.168.0.60"
@@ -46,7 +46,7 @@ def on_message(client, userdata, msg):
          os.system("irsend SEND_ONCE deebot KEY_PLAY")
 
 	# more callbacks, etc
-client = mqtt.Client("Stofzuiger")
+client = mqtt.Client("Stofzuiger"+str(random.randint(1,9999999999)))
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(MQTT_SERVER,1883,60)
