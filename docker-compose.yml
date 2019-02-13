@@ -9,6 +9,7 @@ services:
 
  waterpomp:
       image: waterpomp
+      privileged: true
       container_name: waterpomp
       restart: unless-stopped
  
