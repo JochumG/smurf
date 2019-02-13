@@ -39,26 +39,23 @@ MQTT_PATH = "pomp"
 
 
 def on_connect(client, userdata, flags, rc):
-    print(client+"Pomp Subscribed (code "+str(rc)+")")
-    # Subscribing in on_connect() means that if we lose the connection and
-    # reconnect then subscriptions will be renewed.
-    client.subscribe(MQTT_PATH)
-	
+	print(client+"Pomp Subscribed (code "+str(rc)+")")
+	# Subscribing in on_connect() means that if we lose the connection and
+	# reconnect then subscriptions will be renewed.
+	client.subscribe(MQTT_PATH)
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
 	print(msg.topic+" "+msg.payload)
 	if msg.payload=="stop":
-	   print ("Stopping the pomp")
-	   #sending GPIO command
-           GPIO.output(7, True)
-
+		print ("Stopping the pomp")
+		#sending GPIO command
+		GPIO.output(7, True)
 	elif msg.payload=="start":
-            print ("Starting the pomp")
-	    #sending GPIO command
-	    GPIO.output(7, False)
-            time.sleep(.8)
-            GPIO.output(7, True)
-
+		print ("Starting the pomp")
+		#sending GPIO command
+		GPIO.output(7, False)
+		time.sleep(.8)
+		GPIO.output(7, True)
 # more callbacks, etc
 client = mqtt.Client("Waterpomp"+str(random.randint(1,1000999999999)))
 client.on_connect = on_connect
