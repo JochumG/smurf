@@ -3,12 +3,12 @@
 # Load libraries
 import RPi.GPIO as GPIO
 import time
-
+import random
 # Set up the GPIO pins
+GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)
 GPIO.output(7, True)
-
 
 #Eerste deepbot actie script listener 28-01-3019
 #KEEP this scipt running
@@ -39,7 +39,7 @@ MQTT_PATH = "pomp"
 
 
 def on_connect(client, userdata, flags, rc):
-    print("Pomp Subscribed (code "+str(rc)+")")
+    print(client+"Pomp Subscribed (code "+str(rc)+")")
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe(MQTT_PATH)
@@ -60,7 +60,7 @@ def on_message(client, userdata, msg):
             GPIO.output(7, True)
 
 # more callbacks, etc
-client = mqtt.Client("Waterpomp")
+client = mqtt.Client("Waterpomp"+str(random.randint(1,1000999999999)))
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(MQTT_SERVER,1883,60)
