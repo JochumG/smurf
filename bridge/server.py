@@ -32,6 +32,7 @@ publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
 # Handle http requests to the root address
 @route('/')
 def index():
+ publish.single(MQTT_PATH,"Command not found", hostname=MQTT_SERVER)
  return 'Command not found'
  
 # Handle http requests to /pomp
@@ -40,14 +41,15 @@ def pomp(action=0):
  MQTT_PATH=MQTT_PATH_Waterpomp
  MQTT_COMMAND=action
  publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
- return "published"
+ return "published" + MQTT_COMMAND
+ 
 # Handle http requests to /deebot
 @route('/deebot/:action')
 def deebot(action=0):
  MQTT_PATH=MQTT_PATH_Deebot
  MQTT_COMMAND=action
  publish.single(MQTT_PATH,MQTT_COMMAND, hostname=MQTT_SERVER)
- return "Published"
+ return "Published" + MQTT_COMMAND
  
 #Gooi maar open poort 80 en stuur de zooi maar naar de MQTT server
 run(host='0.0.0.0', port=80)

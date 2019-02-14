@@ -57,7 +57,7 @@ def on_message(client, userdata, msg):
 		time.sleep(.8)
 		GPIO.output(7, True)
 # more callbacks, etc
-client = mqtt.Client("Waterpomp"+str(random.randint(1,1000999999999)))
+client = mqtt.Client("Waterpomp")
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(MQTT_SERVER,1883,60)

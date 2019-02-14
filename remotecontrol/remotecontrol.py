@@ -39,14 +39,16 @@ def on_message(client, userdata, msg):
 	   print ("IRC command for stop bot")
 	   #sending IRC command
 	   os.system("irsend SEND_ONCE deebot KEY_STOP")
-
+	   publish.single(MQTT_PATH,"IRC command for stop bot", hostname=MQTT_SERVER)
 	   
 	elif msg.payload=="start":
+	
          print ("IRC command for start bot")
          os.system("irsend SEND_ONCE deebot KEY_PLAY")
+		 publish.single(MQTT_PATH,"IRC command for start bot", hostname=MQTT_SERVER)
 
 	# more callbacks, etc
-client = mqtt.Client("Stofzuiger"+str(random.randint(1,9999999999)))
+client = mqtt.Client("Stofzuiger")
 client.on_connect = on_connect
 client.on_message = on_message
 client.connect(MQTT_SERVER,1883,60)
