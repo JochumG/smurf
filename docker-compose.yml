@@ -20,7 +20,7 @@ services:
 
  bridge:
       image: bridge
-      container_name: bridge
+      container_name: bridge 
       ports:
           - 80
       expose:
