@@ -1,7 +1,10 @@
+# image build
 #docker build ./  -t bridge
-#sudo service nginx stop
+# slinger image werkend (check!)
+#sudo docker run --restart=unless-stopped --net=host -tid bridge
+
 FROM python:latest
- 	
+
 RUN pip install --upgrade pip	
 #stappen om een poort open te gooien
 #python -m virtualenv venv

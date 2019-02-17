@@ -15,6 +15,7 @@ services:
  
  remtecontrol:
       image: remotecontrol
+      privileged: true
       container_name: remotecontrol
       restart: unless-stopped
 
