@@ -1,9 +1,21 @@
+#!/usr/bin/env python
 # Python Script To Control GPIO
+
+#waterpomp/Deebot in een Docker is zinloos omdat deze hardware config aansluit
+#untested: sudo python waterpomp.py -d>../logs/waterpomp.log
 
 # Load libraries
 import RPi.GPIO as GPIO
 import time
 import random
+from datetime import datetime
+
+#logging
+def logging(string):
+	utc_time = datetime.utcfromtimestamp(time.time())
+	ticker=utc_time.strftime("%Y-%m-%d %H:%M:%S:")
+	print(ticker+string)
+
 # Set up the GPIO pins
 GPIO.setwarnings(True)
 GPIO.setmode(GPIO.BOARD)
@@ -27,18 +39,19 @@ MQTT_SERVER = "192.168.0.60"
 #Subscription paths
 MQTT_PATH = "pomp"
 
+logging("Script initiated")
 
 def on_connect(client, userdata, flags, rc):
-	print("Pomp Subscribed (code "+str(rc)+")")
+	logging("Subscribed (code "+str(rc)+")")
 	# Subscribing in on_connect() means that if we lose the connection and
 	# reconnect then subscriptions will be renewed.
 	client.subscribe(MQTT_PATH)
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-	print(msg.topic+" "+msg.payload)
+	logging (msg.topic+" "+msg.payload)
 	if msg.payload=="stop":
-		print ("Stopping the pomp")
+		logging ("Stopping the pomp")
 		#sending GPIO command
 		GPIO.output(7, True)
 	elif msg.payload=="start":
