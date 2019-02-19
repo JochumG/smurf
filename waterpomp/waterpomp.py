@@ -5,6 +5,7 @@
 #untested: sudo python waterpomp.py -d>../logs/waterpomp.log
 #KEEP this scipt running
 #nohup sudo python /home/pismurf/code/waterpomp/waterpomp.py  -d>/home/pismurf/code/logs/waterpomp.log
+#nohup python /home/pismurf/code/waterpomp/waterpomp.py>../logs/waterpomp.log -d
 
 # Load libraries
 import RPi.GPIO as GPIO
