@@ -3,7 +3,10 @@
 
 #waterpomp/Deebot in een Docker is zinloos omdat deze hardware config aansluit
 #KEEP this script running
-#nohup sudo python /home/pismurf/code/waterpomp/waterpomp.py>/home/pismurf/code/logs/waterpomp.log -d &
+#nohup sudo /usr/bin/python /home/pismurf/code/waterpomp/waterpomp.py>/home/pismurf/code/logs/waterpomp.log -d &
+
+#in the file voor boot/etc/rc.local
+#/usr/bin/python /home/pismurf/code/waterpomp/waterpomp.py>/home/pismurf/code/logs/waterpomp.log -d &
 
 # Load libraries
 import RPi.GPIO as GPIO

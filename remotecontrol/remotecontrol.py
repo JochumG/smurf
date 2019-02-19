@@ -1,6 +1,9 @@
 #Eerste deepbot actie script listener 28-01-3019
 #KEEP this scipt running
-#nohup sudo python /home/pismurf/code/remotecontrol/remotecontrol.py>/home/pismurf/code/logs/remotecontrol.log -d &
+#nohup sudo /usr/bin/python /home/pismurf/code/remotecontrol/remotecontrol.py>/home/pismurf/code/logs/remotecontrol.log -d &
+
+#in the file voor boot/etc/rc.local
+#/usr/bin/python /home/pismurf/code/remotecontrol/remotecontrol.py>/home/pismurf/code/logs/remotecontrol.log -d &
 
 
 #https://www.instructables.com/id/How-To-Useemulate-remotes-with-Arduino-and-Raspber/
