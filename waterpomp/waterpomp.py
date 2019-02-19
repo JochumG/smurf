@@ -2,10 +2,8 @@
 # Python Script To Control GPIO
 
 #waterpomp/Deebot in een Docker is zinloos omdat deze hardware config aansluit
-#untested: sudo python waterpomp.py -d>../logs/waterpomp.log
-#KEEP this scipt running
-#nohup sudo python /home/pismurf/code/waterpomp/waterpomp.py  -d>/home/pismurf/code/logs/waterpomp.log
-#nohup python /home/pismurf/code/waterpomp/waterpomp.py>../logs/waterpomp.log -d
+#KEEP this script running
+#nohup sudo python /home/pismurf/code/waterpomp/waterpomp.py>/home/pismurf/code/logs/waterpomp.log -d &
 
 # Load libraries
 import RPi.GPIO as GPIO
@@ -42,6 +40,10 @@ MQTT_SERVER = "192.168.0.60"
 #Subscription paths
 MQTT_PATH = "pomp"
 
+def logging(string):
+ ts=datetime.datetime.now().strftime("%d.%b %Y %H:%M:%S")
+ print (ts+":"+string)
+ 
 logging("Script initiated")
 
 def on_connect(client, userdata, flags, rc):

@@ -2,6 +2,7 @@
 #docker build ./  -t bridge
 # slinger image werkend (check!)
 #sudo docker run --restart=unless-stopped --net=host -tid bridge
+#sudo docker run --restart=always --net=host -tid bridge
 
 FROM python:latest
 

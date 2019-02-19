@@ -1,4 +1,5 @@
 #docker build ./  -t remotecontrol
+#lijkt niet te werken i.v.m. de LIRC 
 FROM python:latest
 
 RUN apt-get update && \

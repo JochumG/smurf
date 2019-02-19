@@ -1,6 +1,7 @@
 #Eerste deepbot actie script listener 28-01-3019
 #KEEP this scipt running
-#nohup python /home/pismurf/mqqt//mqqt/deebot_subscriber.py &
+#nohup sudo python /home/pismurf/code/remotecontrol/remotecontrol.py>/home/pismurf/code/logs/remotecontrol.log -d &
+
 
 #https://www.instructables.com/id/How-To-Useemulate-remotes-with-Arduino-and-Raspber/
 #een deebot lirc file maken
@@ -12,8 +13,7 @@
 #deebot.lircd.conf
 #sudo irrecord -d /dev/lirc0 ~/lircd.conf
 
-#op de windows machine een environ omgeving ingesteld, om dev /test/ staging te faciliteren
-#environment[CODE_env]="dev"
+
 
 import os
 import paho.mqtt.client as mqtt
@@ -25,21 +25,24 @@ MQTT_SERVER = "192.168.0.60"
 #Subscription paths
 MQTT_PATH = "deebot"
 
-
+def logging(string):
+ ts=datetime.datetime.now().strftime("%d.%b %Y %H:%M:%S")
+ print (ts+":"+string)
+ 
 def on_connect(client, userdata, flags, rc):
-    #print("Deebot Subscribed (code "+str(rc)+")")
+    logging("Deebot Subscribed (code "+str(rc)+")")
     # Subscribing in on_connect() means that if we lose the connection and
     # reconnect then subscriptions will be renewed.
     client.subscribe(MQTT_PATH)
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
-	#print(msg.topic+" "+msg.payload)
+	logging(msg.topic+" "+msg.payload)
 	if msg.payload=="stop":
 	   os.system("irsend SEND_ONCE deebot KEY_STOP")
-	   print ("IRC command for stop bot")
+	   logging ("IRC command for stop bot")
 	elif msg.payload=="start":
-           print ("IRC command for start bot")
+           logging ("IRC command for start bot")
            os.system("irsend SEND_ONCE deebot KEY_PLAY")
 # more callbacks, etc
 client = mqtt.Client("Stofzuiger")
