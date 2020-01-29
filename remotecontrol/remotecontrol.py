@@ -46,16 +46,10 @@ def on_message(client, userdata, msg):
            os.system("irsend SEND_ONCE deebot KEY_PLAY")
 # more callbacks, etc
 
-try:
-    firstrun
-except NameError:
- client = mqtt.Client("Stofzuiger")
- client.on_message = on_message
- client.on_connect = on_connect
- client.connect(MQTT_SERVER,1883,60)
- firstrun  = 1
-else:
- firstrun = 2
+client = mqtt.Client("Stofzuiger")
+client.on_message = on_message
+client.on_connect = on_connect
+client.connect(MQTT_SERVER,1883,60)
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.
