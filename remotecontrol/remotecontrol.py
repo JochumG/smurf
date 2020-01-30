@@ -43,7 +43,7 @@ def on_message(client, userdata, msg):
 	   print ("IRC command for stop bot")
 	elif msg.payload=="start":
            print ("IRC command for start bot")
-           os.system("irsend SEND_ONCE deebot KEY_PLAY")
+           os.system("irsend SEND_ONCE deebot KEY_PLAY --count 5")
 # more callbacks, etc
 
 client = mqtt.Client("Stofzuiger")
